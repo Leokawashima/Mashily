@@ -6,10 +6,10 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/walljump/Scenes/Title.unity
+    path: Assets/Scenes/Title.unity
     guid: 06936d5bafec0b943b408c8381f62713
   - enabled: 1
-    path: Assets/walljump/Scenes/Stage.unity
+    path: Assets/Scenes/Stage.unity
     guid: 74c210aced62168438f806bd3291184d
   - enabled: 0
     path: Assets/walljump/Scenes/TestMap.unity
