@@ -1,9 +1,9 @@
-using UnityEngine;
+ï»¿using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class SystemScript: MonoBehaviour
 {
-    [Header("ƒJ[ƒ\ƒ‹‚Ì•\¦")]
+    [Header("ã‚«ãƒ¼ã‚½ãƒ«ã®è¡¨ç¤º")]
     [SerializeField] bool ShowCursor = true;
 
     void Awake()

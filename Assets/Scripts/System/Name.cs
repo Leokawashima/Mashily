@@ -1,5 +1,8 @@
-namespace Name
+﻿namespace Name
 {
+    /// <summary>
+    /// 読み取り用定数タグ文字列
+    /// </summary>
     public static class Tag
     {
         public const string Untaghed = "Untagged";
@@ -10,6 +13,9 @@ namespace Name
         public const string HighJumpFloor = "HighJumpFloor";
         public const string HighJumpWall = "HighJumpWall";
     }
+    /// <summary>
+    /// 読み取り用定数アニメーション文字列
+    /// </summary>
     public static class Anim
     {
         public const string defalt = "defalt";
@@ -21,11 +27,17 @@ namespace Name
         public const string isLeft = "isLeft";
         public const string lookBack = "lookBack";
     }
+    /// <summary>
+    /// 読み取り用定数シーン文字列
+    /// </summary>
     public static class Scene
     {
         public const string Title = "Title";
         public const string Stage = "Stage";
     }
+    /// <summary>
+    /// 読み取り用定数InputManagerAxis文字列
+    /// </summary>
     public static class Input
     {
         public const string Horizontal = "Horizontal";

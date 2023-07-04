@@ -1,26 +1,25 @@
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
-using Cinemachine;
 
 public class PauseScript : MonoBehaviour
 {
-	[SerializeField]	
-	private GameObject pauseUIPrefab;
-	private GameObject pauseUIInstance;
+	[Header("UIプレファブ")]
+	[SerializeField] GameObject pauseUIPrefab;
+	[Header("カメラ")]
+	[SerializeField] MultifunctionFollowingCamera cam;
 
-	[SerializeField]
-	private MultifunctionFollowingCamera cam;
+	GameObject pauseUIInstance;
 
-	private Slider sliderSensitivityY;
-	private Slider sliderSensitivityX;
-	private Toggle padtoggle;
+	Slider sliderSensitivityY;
+	Slider sliderSensitivityX;
+	Toggle padtoggle;
 
 	public bool padmode = false;
 
-	private static float sensiY;
-	private static float sensiX;
+	static float sensiY;
+	static float sensiX;
 
-	private bool releaseKey = true;
+	bool releaseKey = true;
 
 	void Update()
 	{
@@ -32,39 +31,41 @@ public class PauseScript : MonoBehaviour
 			padmode = padtoggle.isOn;
 
 		if (releaseKey)
-		if(Input.GetAxisRaw(padName) > 0f)
-		{
-			releaseKey = false;
-
-			if(pauseUIInstance == null)
+        {
+			if(Input.GetAxisRaw(padName) > 0f)
 			{
-				pauseUIInstance = GameObject.Instantiate(pauseUIPrefab) as GameObject;
+				releaseKey = false;
 
-				GameObject slidY = GameObject.Find("SliderY");
-				GameObject slidX = GameObject.Find("SliderX");
-				GameObject tog = GameObject.Find("PadChange");
+				if(pauseUIInstance == null)
+				{
+					pauseUIInstance = GameObject.Instantiate(pauseUIPrefab) as GameObject;
 
-				sliderSensitivityY = slidY.GetComponent<Slider>();
-				sliderSensitivityY.value = sensiY == 0f ? cam.inputSpeedY : sensiY;
-				sliderSensitivityX = slidX.GetComponent<Slider>();
-				sliderSensitivityX.value = sensiX == 0f ? cam.inputSpeedX : sensiX;
-				padtoggle = tog.GetComponent<Toggle>();
-				padtoggle.isOn = padmode;
-				Time.timeScale = 0f;
-				Cursor.visible = true;
-				Cursor.lockState = CursorLockMode.Confined;
-			}
-			else
-			{
-				cam.inputSpeedY = sliderSensitivityY.value;
-				cam.inputSpeedX = sliderSensitivityX.value;
-				sensiY = cam.inputSpeedY;
-				sensiX = cam.inputSpeedX;
-				padmode = padtoggle.isOn;
-				Destroy(pauseUIInstance);
-				Time.timeScale = 1f;
-				Cursor.visible = false;
-				Cursor.lockState = CursorLockMode.Locked;
+					GameObject slidY = GameObject.Find("SliderY");
+					GameObject slidX = GameObject.Find("SliderX");
+					GameObject tog = GameObject.Find("PadChange");
+
+					sliderSensitivityY = slidY.GetComponent<Slider>();
+					sliderSensitivityY.value = sensiY == 0f ? cam.inputSpeedY : sensiY;
+					sliderSensitivityX = slidX.GetComponent<Slider>();
+					sliderSensitivityX.value = sensiX == 0f ? cam.inputSpeedX : sensiX;
+					padtoggle = tog.GetComponent<Toggle>();
+					padtoggle.isOn = padmode;
+					Time.timeScale = 0f;
+					Cursor.visible = true;
+					Cursor.lockState = CursorLockMode.Confined;
+				}
+				else
+				{
+					cam.inputSpeedY = sliderSensitivityY.value;
+					cam.inputSpeedX = sliderSensitivityX.value;
+					sensiY = cam.inputSpeedY;
+					sensiX = cam.inputSpeedX;
+					padmode = padtoggle.isOn;
+					Destroy(pauseUIInstance);
+					Time.timeScale = 1f;
+					Cursor.visible = false;
+					Cursor.lockState = CursorLockMode.Locked;
+				}
 			}
 		}
 	}

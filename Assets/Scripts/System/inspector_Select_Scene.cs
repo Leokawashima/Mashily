@@ -1,8 +1,12 @@
-using UnityEngine;
+﻿using UnityEngine;
 #if UNITY_EDITOR
 using UnityEditor;
 #endif
 
+/// <summary>
+/// https://baba-s.hatenablog.com/entry/2017/11/14/110000
+/// こちらで公開されているスクリプトを使用している
+/// </summary>
 [System.Serializable]
 public class SceneObject
 {
